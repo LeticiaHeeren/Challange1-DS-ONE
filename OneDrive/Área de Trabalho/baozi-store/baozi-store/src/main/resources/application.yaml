@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: baozi-store
+# Configuração do servidor
+server:
+  port: 8080
+
+# Configuração do Banco de Dados H2
+spring:
+  datasource:
+    url: jdbc:h2:mem:baozistoredb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  # Console Web do H2 (para debug)
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  # Configuração do JPA/Hibernate
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update  # Cria/atualiza tabelas automaticamente
+    show-sql: true  # Mostra SQL no console (útil para aprender)
+    properties:
+      hibernate:
+        format-sql: true  # Formata o SQL bonitinho
+
+# Logging (para ver o que está acontecendo)
+logging:
+  level:
+    com.baozibaozi: DEBUG
+    org.hibernate.SQL: DEBUG
